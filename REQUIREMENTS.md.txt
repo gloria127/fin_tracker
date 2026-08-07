@@ -1,0 +1,35 @@
+
+один пользователь;
+одна основная валюта: RUB
+Как пользователь вводит сумму: 120, 120.50
+Как округлять сумму с лишними знаками? в большую сторону
+положительные расходы;
+возможность указать дату вручную;
+категории необязательны;
+общий бюджет на месяц;
+настоящее удаление записей;
+регулярные платежи оставить на будущую версию.
+Если дата не указана, использовать сегодняшний день? да
+Можно ли добавлять расходы задним числом? да
+Можно ли добавлять расходы на будущую дату? да
+Какой формат принимает CLI: например, YYYY-MM-DD? дд-мм-гггг
+Какой часовой пояс используется? мск
+
+
+Минимальный набор:
+
+expense-tracker add
+expense-tracker update
+expense-tracker delete
+expense-tracker list
+expense-tracker show
+expense-tracker summary
+
+Повседневный набор:
+
+expense-tracker category add
+expense-tracker category list
+expense-tracker budget set
+expense-tracker budget status
+expense-tracker export
+expense-tracker backup
