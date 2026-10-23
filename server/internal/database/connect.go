@@ -14,6 +14,3 @@ func Connect(dbUrl string) *sqlx.DB {
 	log.Println("подключено к бд")
 	return db
 }
-
-
-/stop 9:52

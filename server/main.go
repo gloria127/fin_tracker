@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/glorse127/fin_tracker/internal/config"
 	"github.com/gofiber/fiber/v2"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
@@ -10,10 +11,13 @@ import (
 
 func main() {
 	app := fiber.New()
-	db, err := sqlx.Connect("postgres", "host=127.0.0.1 port=5433 user=postgres password=postgres dbname=finance_db sslmode=disable")
+
+	cfg := config.Load()
+	db, err := sqlx.Connect("postgres", cfg.DatabaseUrl)
 	if err != nil {
 		log.Fatalf("error connecting to database: %v\n", err)
 	}
+	defer db.Close()
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		var result int
@@ -28,7 +32,5 @@ func main() {
 			"database": "available",
 		})
 	})
-	log.Fatal(app.Listen(":4000"))
+	log.Fatal(app.Listen(":" + cfg.Port))
 }
-
-//5:50 timecode stop
